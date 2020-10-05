@@ -1,7 +1,7 @@
 package com.reactnative.googlecast;
 
 import android.net.Uri;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.ReadableMap;
 import com.google.android.gms.cast.MediaInfo;
@@ -87,6 +87,32 @@ public class MediaInfoBuilder {
         if (posterUrl != null) {
             movieMetadata.addImage(new WebImage(Uri.parse(posterUrl)));
         }
+
+        String media_class = ReadableMapUtils.getString(parameters, "media_class");
+        if (media_class != null) {
+            movieMetadata.putString("media_class", media_class);
+        }
+
+        String media_href = ReadableMapUtils.getString(parameters, "media_href");
+        if (media_href != null) {
+            movieMetadata.putString("media_href", media_href);
+        }
+
+        Integer media_playhead = ReadableMapUtils.getInt(parameters, "media_playhead");
+        if (media_playhead != null) {
+            movieMetadata.putInt("media_playhead", media_playhead);
+        }
+
+        String media_resource_key = ReadableMapUtils.getString(parameters, "media_resource_key");
+        if (media_resource_key != null) {
+            movieMetadata.putString("media_resource_key", media_resource_key);
+        }
+
+        String preferred_subtitle_language = ReadableMapUtils.getString(parameters, "preferred_subtitle_language");
+        if (preferred_subtitle_language != null) {
+            movieMetadata.putString("preferred_subtitle_language", preferred_subtitle_language);
+        }
+
 
         String mediaUrl = ReadableMapUtils.getString(parameters, "mediaUrl");
         if (mediaUrl == null) {
